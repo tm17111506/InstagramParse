@@ -16,6 +16,7 @@
 		92F5EA6E20F4144D005FBE84 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F5EA6D20F4144D005FBE84 /* LoginViewController.m */; };
 		92F5EA7120F41992005FBE84 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F5EA7020F41992005FBE84 /* TabBarViewController.m */; };
 		92F5EA7420F41C9A005FBE84 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F5EA7320F41C9A005FBE84 /* FeedViewController.m */; };
+		92F5EA7720F423B4005FBE84 /* CaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F5EA7620F423B4005FBE84 /* CaptureViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		92F5EA7020F41992005FBE84 /* TabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		92F5EA7220F41C9A005FBE84 /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		92F5EA7320F41C9A005FBE84 /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		92F5EA7520F423B4005FBE84 /* CaptureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptureViewController.h; sourceTree = "<group>"; };
+		92F5EA7620F423B4005FBE84 /* CaptureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptureViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 				92F5EA7020F41992005FBE84 /* TabBarViewController.m */,
 				92F5EA7220F41C9A005FBE84 /* FeedViewController.h */,
 				92F5EA7320F41C9A005FBE84 /* FeedViewController.m */,
+				92F5EA7520F423B4005FBE84 /* CaptureViewController.h */,
+				92F5EA7620F423B4005FBE84 /* CaptureViewController.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -229,6 +234,7 @@
 				92F5EA6E20F4144D005FBE84 /* LoginViewController.m in Sources */,
 				92F5EA6520F40876005FBE84 /* main.m in Sources */,
 				92F5EA5720F40876005FBE84 /* AppDelegate.m in Sources */,
+				92F5EA7720F423B4005FBE84 /* CaptureViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

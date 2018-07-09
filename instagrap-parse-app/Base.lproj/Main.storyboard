@@ -62,13 +62,31 @@
             </objects>
             <point key="canvasLocation" x="-22" y="63"/>
         </scene>
-        <!--View Controller-->
+        <!--Capture View Controller-->
         <scene sceneID="he0-A1-IjT">
             <objects>
-                <viewController id="ASt-p7-0Ok" sceneMemberID="viewController">
+                <viewController id="ASt-p7-0Ok" customClass="CaptureViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8fP-7y-Y1v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lA-Gk-far">
+                                <rect key="frame" x="160" y="158" width="54" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="onTapCamera:" destination="ASt-p7-0Ok" eventType="touchUpInside" id="QY6-X2-HYx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Me2-gz-EDA">
+                                <rect key="frame" x="141" y="256" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Photo Library"/>
+                                <connections>
+                                    <action selector="onTapPhotoLibrary:" destination="ASt-p7-0Ok" eventType="touchUpInside" id="TIg-8k-jFu"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="5xv-cS-qJ6"/>
                     </view>
