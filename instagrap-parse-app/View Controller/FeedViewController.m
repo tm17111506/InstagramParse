@@ -16,7 +16,7 @@
 
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *posts;
+@property (strong, nonatomic) NSArray<Post*> *posts;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
@@ -27,7 +27,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.rowHeight = 500;
     [self fetchPosts];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -53,9 +53,10 @@
 - (void)fetchPosts{
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
     postQuery.limit = 20;
     
-    [postQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable posts, NSError * _Nullable error) {
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray <Post*> * _Nullable posts, NSError * _Nullable error) {
         if(posts){
             NSLog(@"Retrived Data");
             self.posts = posts;
@@ -75,19 +76,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     Post *post = self.posts[indexPath.row];
+    NSLog(@"%@", post.author.username);
     NSURL *url = [NSURL URLWithString:post.image.url];
     [cell.postImageView setImageWithURL:url];
     return cell;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+//    if([segue.identifier isEqual:@"DetailsPostSegue"]){
+//        UITableViewCell *tappedCell = sender;
+//        NSIndexPath *tappedIndex = [self.tableView indexPathForCell:tappedCell];
+//        Post *post = self.posts[tappedIndex.row];
+//        NSLog(@"%@", post.author.username);
+//
+//        DetailsPostViewController *detailsVC = [segue destinationViewController];
+//        detailsVC.post = post;
+//    }
 }
-*/
+
 
 @end

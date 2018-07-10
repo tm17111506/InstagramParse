@@ -8,5 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CaptureViewController : UIViewController  <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CaptureViewController : UIViewController  <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @end

@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		38B6CE0B6FA09AFD4516BD58 /* libPods-instagrap-parse-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 120FCD771291D2B7E09A6260 /* libPods-instagrap-parse-app.a */; };
+		92B5AFC620F5323200A25D5F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B5AFC520F5323200A25D5F /* ProfileViewController.m */; };
 		92F5EA5720F40876005FBE84 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F5EA5620F40876005FBE84 /* AppDelegate.m */; };
 		92F5EA5D20F40876005FBE84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F5EA5B20F40876005FBE84 /* Main.storyboard */; };
 		92F5EA5F20F40876005FBE84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F5EA5E20F40876005FBE84 /* Assets.xcassets */; };
 		92F5EA6220F40876005FBE84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F5EA6020F40876005FBE84 /* LaunchScreen.storyboard */; };
 		92F5EA6520F40876005FBE84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F5EA6420F40876005FBE84 /* main.m */; };
 		92F5EA6E20F4144D005FBE84 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F5EA6D20F4144D005FBE84 /* LoginViewController.m */; };
-		92F5EA7120F41992005FBE84 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F5EA7020F41992005FBE84 /* TabBarViewController.m */; };
 		92F5EA7420F41C9A005FBE84 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F5EA7320F41C9A005FBE84 /* FeedViewController.m */; };
 		92F5EA7720F423B4005FBE84 /* CaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F5EA7620F423B4005FBE84 /* CaptureViewController.m */; };
 		92F5EA7D20F42B43005FBE84 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F5EA7C20F42B43005FBE84 /* Post.m */; };
@@ -25,6 +25,8 @@
 		120FCD771291D2B7E09A6260 /* libPods-instagrap-parse-app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-instagrap-parse-app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16EF50904C59FB400634D7EB /* Pods-instagrap-parse-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagrap-parse-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-instagrap-parse-app/Pods-instagrap-parse-app.release.xcconfig"; sourceTree = "<group>"; };
 		53536718A459AAFBB20660DC /* Pods-instagrap-parse-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagrap-parse-app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-instagrap-parse-app/Pods-instagrap-parse-app.debug.xcconfig"; sourceTree = "<group>"; };
+		92B5AFC420F5323200A25D5F /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		92B5AFC520F5323200A25D5F /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		92F5EA5220F40876005FBE84 /* instagrap-parse-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "instagrap-parse-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F5EA5520F40876005FBE84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		92F5EA5620F40876005FBE84 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -35,8 +37,6 @@
 		92F5EA6420F40876005FBE84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		92F5EA6C20F4144D005FBE84 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		92F5EA6D20F4144D005FBE84 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		92F5EA6F20F41992005FBE84 /* TabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
-		92F5EA7020F41992005FBE84 /* TabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		92F5EA7220F41C9A005FBE84 /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		92F5EA7320F41C9A005FBE84 /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		92F5EA7520F423B4005FBE84 /* CaptureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptureViewController.h; sourceTree = "<group>"; };
@@ -116,12 +116,12 @@
 			children = (
 				92F5EA6C20F4144D005FBE84 /* LoginViewController.h */,
 				92F5EA6D20F4144D005FBE84 /* LoginViewController.m */,
-				92F5EA6F20F41992005FBE84 /* TabBarViewController.h */,
-				92F5EA7020F41992005FBE84 /* TabBarViewController.m */,
 				92F5EA7220F41C9A005FBE84 /* FeedViewController.h */,
 				92F5EA7320F41C9A005FBE84 /* FeedViewController.m */,
 				92F5EA7520F423B4005FBE84 /* CaptureViewController.h */,
 				92F5EA7620F423B4005FBE84 /* CaptureViewController.m */,
+				92B5AFC420F5323200A25D5F /* ProfileViewController.h */,
+				92B5AFC520F5323200A25D5F /* ProfileViewController.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -255,9 +255,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92F5EA7120F41992005FBE84 /* TabBarViewController.m in Sources */,
 				92F5EA7420F41C9A005FBE84 /* FeedViewController.m in Sources */,
 				92F5EA6E20F4144D005FBE84 /* LoginViewController.m in Sources */,
+				92B5AFC620F5323200A25D5F /* ProfileViewController.m in Sources */,
 				92F5EA8120F43927005FBE84 /* PostCell.m in Sources */,
 				92F5EA6520F40876005FBE84 /* main.m in Sources */,
 				92F5EA5720F40876005FBE84 /* AppDelegate.m in Sources */,

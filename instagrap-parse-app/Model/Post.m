@@ -11,8 +11,8 @@
 @implementation Post
 @dynamic postID, userID, author, caption, image, likeCount, commentCount;
 
-const int imageHeight = 100;
-const int imageWidth = 100;
+const int imageHeight = 500;
+const int imageWidth = 500;
 
 + (nonnull NSString *)parseClassName{
     return @"Post";
@@ -22,7 +22,9 @@ const int imageWidth = 100;
     Post *newPost = [Post new];
     UIImage *resizedImage = [newPost resizeImage:image];
     newPost.image = [self getPFFileFromImage:resizedImage];
+    NSLog(@"%@", [PFUser currentUser].username);
     newPost.author = [PFUser currentUser];
+    NSLog(@"%@", newPost.author.username);
     newPost.caption = caption;
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
