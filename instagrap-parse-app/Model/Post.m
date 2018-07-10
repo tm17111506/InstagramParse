@@ -11,13 +11,17 @@
 @implementation Post
 @dynamic postID, userID, author, caption, image, likeCount, commentCount;
 
+const int imageHeight = 100;
+const int imageWidth = 100;
+
 + (nonnull NSString *)parseClassName{
     return @"Post";
 }
 
 + (void)postUserImage:(UIImage *)image withCaption:(NSString *)caption withCompletion:(PFBooleanResultBlock)completion{
     Post *newPost = [Post new];
-    newPost.image = [self getPFFileFromImage:image];
+    UIImage *resizedImage = [newPost resizeImage:image];
+    newPost.image = [self getPFFileFromImage:resizedImage];
     newPost.author = [PFUser currentUser];
     newPost.caption = caption;
     newPost.likeCount = @(0);
@@ -34,4 +38,21 @@
     
     return [PFFile fileWithName:@"image.png" data:imageData];
 }
+
+- (UIImage *)resizeImage:(UIImage *)image{
+    CGSize size = CGSizeMake(imageWidth, imageHeight);
+    
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.height, size.width)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 @end
