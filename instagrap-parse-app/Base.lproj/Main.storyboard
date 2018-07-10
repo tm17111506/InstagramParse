@@ -100,12 +100,30 @@
         <scene sceneID="iSV-rH-m2V">
             <objects>
                 <viewController id="hzf-i6-oCC" customClass="FeedViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5XV-s1-4tY">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DYw-WV-PB0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Gdu-79-CIW"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="215" id="DEI-lv-flJ" customClass="PostCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="215"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DEI-lv-flJ" id="GtX-S0-CBs">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="214.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NUA-7R-cTC">
+                                            <rect key="frame" x="5" y="0.0" width="240" height="214.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="postImageView" destination="NUA-7R-cTC" id="9Fr-wS-ijo"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
                     <navigationItem key="navigationItem" id="iKb-rr-UdR">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="0sW-Yh-dvo">
                             <connections>
@@ -113,6 +131,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="DYw-WV-PB0" id="SYi-BU-OzH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WNF-Hg-RPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

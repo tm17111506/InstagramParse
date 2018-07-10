@@ -10,15 +10,29 @@
 #import "Parse.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "Post.h"
+#import "PostCell.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface FeedViewController ()
-
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *posts;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation FeedViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    [self fetchPosts];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
     // Do any additional setup after loading the view.
 }
 
@@ -34,6 +48,36 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     appDelegate.window.rootViewController = loginViewController;
+}
+
+- (void)fetchPosts{
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    postQuery.limit = 20;
+    
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable posts, NSError * _Nullable error) {
+        if(posts){
+            NSLog(@"Retrived Data");
+            self.posts = posts;
+            [self.tableView reloadData];
+        }
+        else{
+            NSLog(@"Unable to fetch Posts: %@", error.localizedDescription);
+        }
+    }];
+    [self.refreshControl endRefreshing];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.posts.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    Post *post = self.posts[indexPath.row];
+    NSURL *url = [NSURL URLWithString:post.image.url];
+    [cell.postImageView setImageWithURL:url];
+    return cell;
 }
 
 /*
