@@ -6,6 +6,7 @@ target 'instagrap-parse-app' do
   # use_frameworks!
   pod 'Parse'
   pod 'AFNetworking'
+  pod 'DateTools'
 
   # Pods for instagrap-parse-app
 

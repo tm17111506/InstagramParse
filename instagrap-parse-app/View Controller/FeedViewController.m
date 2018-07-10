@@ -12,7 +12,6 @@
 #import "LoginViewController.h"
 #import "Post.h"
 #import "PostCell.h"
-#import "UIImageView+AFNetworking.h"
 
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -76,9 +75,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     Post *post = self.posts[indexPath.row];
-    NSLog(@"%@", post.author.username);
-    NSURL *url = [NSURL URLWithString:post.image.url];
-    [cell.postImageView setImageWithURL:url];
+    [cell setPostDetail:post];
     return cell;
 }
 
