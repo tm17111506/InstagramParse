@@ -7,6 +7,8 @@
 //
 
 #import "CaptureViewController.h"
+#import "Post.h"
+
 @interface CaptureViewController ()
 @end
 
@@ -41,9 +43,17 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
-//    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
 //    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     // Do something with the images (based on your use case)
+    [Post postUserImage:originalImage withCaption:nil withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded){
+            NSLog(@"Successfully uploaded image!");
+        }
+        else{
+            NSLog(@"😫😫😫 Error posting image: %@", error.localizedDescription);
+        }
+    }];
     NSLog(@"%Image Received!");
     
     // Dismiss UIImagePickerController to go back to your original view controller
