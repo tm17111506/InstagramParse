@@ -10,6 +10,8 @@
 		38B6CE0B6FA09AFD4516BD58 /* libPods-instagrap-parse-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 120FCD771291D2B7E09A6260 /* libPods-instagrap-parse-app.a */; };
 		92B5AFC620F5323200A25D5F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B5AFC520F5323200A25D5F /* ProfileViewController.m */; };
 		92B5AFC920F539D700A25D5F /* PostCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B5AFC820F539D700A25D5F /* PostCollectionCell.m */; };
+		92B5AFCC20F560FF00A25D5F /* DescriptionPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B5AFCB20F560FF00A25D5F /* DescriptionPostViewController.m */; };
+		92B5AFCF20F574D000A25D5F /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B5AFCE20F574D000A25D5F /* SettingViewController.m */; };
 		92F5EA5720F40876005FBE84 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F5EA5620F40876005FBE84 /* AppDelegate.m */; };
 		92F5EA5D20F40876005FBE84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F5EA5B20F40876005FBE84 /* Main.storyboard */; };
 		92F5EA5F20F40876005FBE84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F5EA5E20F40876005FBE84 /* Assets.xcassets */; };
@@ -30,6 +32,10 @@
 		92B5AFC520F5323200A25D5F /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		92B5AFC720F539D700A25D5F /* PostCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCollectionCell.h; sourceTree = "<group>"; };
 		92B5AFC820F539D700A25D5F /* PostCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCollectionCell.m; sourceTree = "<group>"; };
+		92B5AFCA20F560FF00A25D5F /* DescriptionPostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DescriptionPostViewController.h; sourceTree = "<group>"; };
+		92B5AFCB20F560FF00A25D5F /* DescriptionPostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DescriptionPostViewController.m; sourceTree = "<group>"; };
+		92B5AFCD20F574D000A25D5F /* SettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		92B5AFCE20F574D000A25D5F /* SettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		92F5EA5220F40876005FBE84 /* instagrap-parse-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "instagrap-parse-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F5EA5520F40876005FBE84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		92F5EA5620F40876005FBE84 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -125,6 +131,10 @@
 				92F5EA7620F423B4005FBE84 /* CaptureViewController.m */,
 				92B5AFC420F5323200A25D5F /* ProfileViewController.h */,
 				92B5AFC520F5323200A25D5F /* ProfileViewController.m */,
+				92B5AFCA20F560FF00A25D5F /* DescriptionPostViewController.h */,
+				92B5AFCB20F560FF00A25D5F /* DescriptionPostViewController.m */,
+				92B5AFCD20F574D000A25D5F /* SettingViewController.h */,
+				92B5AFCE20F574D000A25D5F /* SettingViewController.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -269,7 +279,9 @@
 				92F5EA8120F43927005FBE84 /* PostCell.m in Sources */,
 				92F5EA6520F40876005FBE84 /* main.m in Sources */,
 				92F5EA5720F40876005FBE84 /* AppDelegate.m in Sources */,
+				92B5AFCC20F560FF00A25D5F /* DescriptionPostViewController.m in Sources */,
 				92F5EA7720F423B4005FBE84 /* CaptureViewController.m in Sources */,
+				92B5AFCF20F574D000A25D5F /* SettingViewController.m in Sources */,
 				92F5EA7D20F42B43005FBE84 /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

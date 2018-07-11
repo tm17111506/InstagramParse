@@ -27,8 +27,7 @@
 -(void)setPostDetail:(Post *)post{
     self.numLikesLabel.text = [NSString stringWithFormat:@"%@",post.likeCount];
     self.detailUserNameLabel.text = post.author.username;
-    self.detailDescriptionLabel.text = @"";
-    NSLog(@"%@", post.description);
+    self.detailDescriptionLabel.text = post.caption;
     self.userNameLabel.text = post.author.username;
     NSDate *createdDate = post.createdAt;
     NSLog(@"%@", createdDate);

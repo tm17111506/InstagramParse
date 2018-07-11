@@ -22,12 +22,11 @@ const int imageWidth = 500;
     Post *newPost = [Post new];
     UIImage *resizedImage = [newPost resizeImage:image];
     newPost.image = [self getPFFileFromImage:resizedImage];
-    NSLog(@"%@", [PFUser currentUser].username);
     newPost.author = [PFUser currentUser];
-    NSLog(@"%@", newPost.author.username);
     newPost.caption = caption;
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
+    newPost.userID = [PFUser currentUser].username;
     
     [newPost saveInBackgroundWithBlock:completion];
 }

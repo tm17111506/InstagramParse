@@ -8,6 +8,7 @@
 
 #import "CaptureViewController.h"
 #import "Post.h"
+#import "DescriptionPostViewController.h"
 
 @interface CaptureViewController ()
 @end
@@ -43,21 +44,28 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    self.orgImage = info[UIImagePickerControllerOriginalImage];
+    if(self.fromUserProfile){
+        NSData *data = UIImagePNGRepresentation(self.orgImage);
+        PFFile *imageFile = [PFFile fileWithName:@"ProfilePic" data:data];
+        
+        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(succeeded){
+                PFUser.currentUser[@"profilePicture"] = imageFile;
+            }
+            else NSLog(@"%@", error.localizedDescription);
+        }];
+        self.fromUserProfile = NO;
+    }
+    else{
+        NSLog(@"HERE");
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [self performSegueWithIdentifier:@"DescriptionSegue" sender:nil];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 //    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     // Do something with the images (based on your use case)
-    [Post postUserImage:originalImage withCaption:nil withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if(succeeded){
-            NSLog(@"Successfully uploaded image!");
-        }
-        else{
-            NSLog(@"😫😫😫 Error posting image: %@", error.localizedDescription);
-        }
-    }];
-    NSLog(@"%Image Received!");
-    
     // Dismiss UIImagePickerController to go back to your original view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,14 +73,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+//     Get the new view controller using [segue destinationViewController].
+//     Pass the selected object to the new view controller.
+    if([segue.identifier isEqual:@"DescriptionSegue"]){
+        UINavigationController *navController = [segue destinationViewController];
+        DescriptionPostViewController *descriptionVC = (DescriptionPostViewController*)navController.topViewController;
+        descriptionVC.orgImage = self.orgImage;
+    }
 }
-*/
+
 
 @end

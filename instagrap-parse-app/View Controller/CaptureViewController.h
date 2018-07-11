@@ -9,4 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CaptureViewController : UIViewController  <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@property (strong, nonatomic) UIImage *orgImage;
+@property BOOL fromUserProfile;
 @end
