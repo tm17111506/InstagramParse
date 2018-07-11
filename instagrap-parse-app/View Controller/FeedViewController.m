@@ -26,7 +26,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    self.tableView.rowHeight = 500;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self fetchPosts];
     
     self.refreshControl = [[UIRefreshControl alloc] init];

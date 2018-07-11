@@ -11,6 +11,7 @@
 
 @interface DescriptionPostViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *captionTextLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *previewImageView;
 
 @end
 
@@ -18,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.previewImageView.image = self.orgImage;
     // Do any additional setup after loading the view.
 }
 

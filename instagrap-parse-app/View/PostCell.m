@@ -10,6 +10,7 @@
 #import "Post.h"
 #import "UIImageView+AFNetworking.h"
 #import "DateTools.h"
+#import "Parse.h"
 
 @implementation PostCell
 
@@ -28,10 +29,9 @@
     self.numLikesLabel.text = [NSString stringWithFormat:@"%@",post.likeCount];
     self.detailUserNameLabel.text = post.author.username;
     self.detailDescriptionLabel.text = post.caption;
+    [self.detailDescriptionLabel sizeToFit];
     self.userNameLabel.text = post.author.username;
     NSDate *createdDate = post.createdAt;
-    NSLog(@"%@", createdDate);
-    NSLog(@"%f", createdDate.timeIntervalSinceNow);
     
     if(createdDate.timeIntervalSinceNow < -43200){
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -41,9 +41,19 @@
     else{
         self.detailTimeLabel.text = createdDate.timeAgoSinceNow;
     }
-
+    [self.detailTimeLabel sizeToFit];
     NSURL *url = [NSURL URLWithString:post.image.url];
     [self.postImageView setImageWithURL:url];
+    
+    [[PFUser currentUser] fetchInBackground];
+    PFUser *user = [PFUser currentUser];
+    
+    PFFile *file = (PFFile *)user[@"profilePicture"];
+    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        self.userProfileImageView.image = [UIImage imageWithData:data];
+    }];
+    
+    self.userProfileImageView.layer.cornerRadius = 20;
 }
 
 @end

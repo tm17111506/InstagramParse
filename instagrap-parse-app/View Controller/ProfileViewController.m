@@ -12,6 +12,10 @@
 #import "UIImageView+AFNetworking.h"
 
 @interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@property (weak, nonatomic) IBOutlet UILabel *numFollowingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numFollwersLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numPostLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *userProfileView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) NSArray *posts;
@@ -31,12 +35,21 @@
     self.postCollectionView.dataSource = self;
     
     UICollectionViewFlowLayout *layout = self.postCollectionView.collectionViewLayout;
-    
     CGFloat posterPerLine = 3;
     CGFloat posterWidth = self.postCollectionView.frame.size.width/posterPerLine - 3;
-    
     layout.itemSize = CGSizeMake(posterWidth, posterWidth);
     // Do any additional setup after loading the view.
+    self.numFollwersLabel.text = @"0";
+    self.numFollowingLabel.text = @"0";
+    
+    [[PFUser currentUser] fetchInBackground];
+    self.user = [PFUser currentUser];
+    
+    PFFile *file = (PFFile *)self.user[@"profilePicture"];
+    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        self.userProfileView.image = [UIImage imageWithData:data];
+    }];
+    self.userProfileView.layer.cornerRadius = 20;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,7 +68,9 @@
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray <Post*> * _Nullable posts, NSError * _Nullable error) {
         if(posts){
             NSLog(@"Retrived Data");
+            NSLog(@"%@", posts);
             self.posts = posts;
+            self.numPostLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)self.posts.count];
             [self.postCollectionView reloadData];
         }
         else{

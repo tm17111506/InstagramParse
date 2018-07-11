@@ -29,13 +29,11 @@
 }
 
 - (void)getImageFromData{
-    NSLog(@"HERE");
     [[PFUser currentUser] fetchInBackground];
     self.user = [PFUser currentUser];
 
     PFFile *file = (PFFile *)self.user[@"profilePicture"];
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        NSLog(@"HERE3");
         self.profileImageView.image = [UIImage imageWithData:data];
     }];
 }
