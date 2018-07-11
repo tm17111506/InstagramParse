@@ -53,7 +53,8 @@
         self.userProfileImageView.image = [UIImage imageWithData:data];
     }];
     
-    self.userProfileImageView.layer.cornerRadius = 20;
+    self.userProfileImageView.layer.cornerRadius = self.userProfileImageView.layer.bounds.size.height/2;
+    self.userProfileImageView.layer.masksToBounds = YES;
 }
 
 @end

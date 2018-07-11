@@ -49,7 +49,8 @@
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         self.userProfileView.image = [UIImage imageWithData:data];
     }];
-    self.userProfileView.layer.cornerRadius = 20;
+    self.userProfileView.layer.cornerRadius = self.userProfileView.layer.bounds.size.height/2;
+    self.userProfileView.layer.masksToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {
