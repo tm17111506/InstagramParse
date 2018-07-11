@@ -9,6 +9,7 @@
 #import "CaptureViewController.h"
 #import "Post.h"
 #import "DescriptionPostViewController.h"
+#import "Parse.h"
 
 @interface CaptureViewController ()
 @end
@@ -47,18 +48,14 @@
     self.orgImage = info[UIImagePickerControllerOriginalImage];
     if(self.fromUserProfile){
         NSData *data = UIImagePNGRepresentation(self.orgImage);
-        PFFile *imageFile = [PFFile fileWithName:@"ProfilePic" data:data];
+        NSString *imageString = [PFFile fileWithName:@"ProfilePic" data:data];
         
-        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if(succeeded){
-                PFUser.currentUser[@"profilePicture"] = imageFile;
-            }
-            else NSLog(@"%@", error.localizedDescription);
-        }];
+        PFUser *user = PFUser.currentUser;
+        user[@"profilePicture"] = imageString;
+        [user saveInBackground];
         self.fromUserProfile = NO;
     }
     else{
-        NSLog(@"HERE");
         [self dismissViewControllerAnimated:YES completion:nil];
         [self performSegueWithIdentifier:@"DescriptionSegue" sender:nil];
     }
