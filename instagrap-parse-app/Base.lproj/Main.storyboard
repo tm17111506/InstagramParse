@@ -634,6 +634,13 @@
                                                 <constraint firstAttribute="height" constant="30" id="PSY-wF-BIT"/>
                                             </constraints>
                                         </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="media_option_button" translatesAutoresizingMaskIntoConstraints="NO" id="KTx-u1-sm2">
+                                            <rect key="frame" x="321" y="27" width="38" height="11"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="38" id="1tR-Qh-SH5"/>
+                                                <constraint firstAttribute="height" constant="11" id="E9i-ic-MLB"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="jNW-yn-u41" firstAttribute="leading" secondItem="GtX-S0-CBs" secondAttribute="leading" constant="15" id="0SC-fg-1qh"/>
@@ -645,6 +652,7 @@
                                         <constraint firstItem="hSg-n3-oIk" firstAttribute="leading" secondItem="yqI-w6-iri" secondAttribute="trailing" constant="5" id="FNQ-e3-ySa"/>
                                         <constraint firstItem="gRa-0x-CgJ" firstAttribute="top" secondItem="NUA-7R-cTC" secondAttribute="bottom" constant="8" id="JOO-YC-xU5"/>
                                         <constraint firstItem="NUA-7R-cTC" firstAttribute="top" secondItem="vz2-b6-2W4" secondAttribute="bottom" constant="10" id="Jtr-WW-VAJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="KTx-u1-sm2" secondAttribute="trailing" constant="16" id="LVQ-5x-RLF"/>
                                         <constraint firstItem="NWS-lc-AFA" firstAttribute="top" secondItem="yqI-w6-iri" secondAttribute="bottom" constant="5" id="Lku-l4-j7u"/>
                                         <constraint firstItem="4b9-WS-9e9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NWS-lc-AFA" secondAttribute="bottom" constant="7" id="M4Q-Pw-mzb"/>
                                         <constraint firstAttribute="trailing" secondItem="NUA-7R-cTC" secondAttribute="trailing" id="Nhp-rd-BLy"/>
@@ -660,6 +668,7 @@
                                         <constraint firstAttribute="trailing" secondItem="MhJ-3b-IYr" secondAttribute="trailing" constant="10" id="hiZ-RE-NpP"/>
                                         <constraint firstItem="jNW-yn-u41" firstAttribute="top" secondItem="NUA-7R-cTC" secondAttribute="bottom" constant="8" id="lL7-My-qgh"/>
                                         <constraint firstItem="4b9-WS-9e9" firstAttribute="top" secondItem="XKR-TH-Reh" secondAttribute="bottom" constant="7" id="lW3-Wr-ren"/>
+                                        <constraint firstItem="KTx-u1-sm2" firstAttribute="top" secondItem="GtX-S0-CBs" secondAttribute="top" constant="27" id="rw0-Pa-uFp"/>
                                         <constraint firstItem="NWS-lc-AFA" firstAttribute="leading" secondItem="GtX-S0-CBs" secondAttribute="leading" constant="15" id="te5-Oe-QgU"/>
                                         <constraint firstItem="NUA-7R-cTC" firstAttribute="leading" secondItem="GtX-S0-CBs" secondAttribute="leading" id="tgI-D6-t0W"/>
                                         <constraint firstItem="4p3-PC-vmU" firstAttribute="top" secondItem="NUA-7R-cTC" secondAttribute="bottom" constant="8" id="w2j-Qy-PeI"/>
@@ -907,6 +916,7 @@
         <image name="feed_tab" width="25" height="25"/>
         <image name="insta_camera_btn" width="25" height="25"/>
         <image name="login_backdrop" width="444" height="794"/>
+        <image name="media_option_button" width="48" height="12"/>
         <image name="notification-icon" width="30" height="30"/>
         <image name="nux_dayone_landing_logo" width="516" height="150"/>
         <image name="photo_library" width="200" height="200"/>
