@@ -57,7 +57,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [self.user fetchInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
-        
         PFFile *file = (PFFile *)self.user[@"profilePicture"];
         [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
             self.userProfileView.image = [UIImage imageWithData:data];

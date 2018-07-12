@@ -11,6 +11,7 @@
 
 @protocol PostCellDelegate
 -(void)segueToProfileFromUser:(PFUser*)user;
+-(void)segueToCommentFromUser:(Post*)post;
 @end
 
 @interface PostCell : UITableViewCell

@@ -9,7 +9,7 @@
 #import "Post.h"
 
 @implementation Post
-@dynamic postID, userID, author, caption, image, likeCount, commentCount, liked;
+@dynamic postID, userID, author, caption, image, likeCount, commentCount, liked, comments;
 
 const int imageHeight = 500;
 const int imageWidth = 500;
@@ -28,7 +28,7 @@ const int imageWidth = 500;
     newPost.commentCount = @(0);
     newPost.userID = [PFUser currentUser].username;
     newPost.liked = NO;
-    
+    newPost.comments = [[NSArray alloc] init];
     [newPost saveInBackgroundWithBlock:completion];
 }
 

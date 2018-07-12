@@ -14,12 +14,14 @@
 #import "PostCell.h"
 #import "SVProgressHUD.h"
 #import "ProfileViewController.h"
+#import "CommentViewController.h"
 
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, PostCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray<Post*> *posts;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) PFUser *profileUser;
+@property (strong, nonatomic) Post *commentPost;
 @end
 
 @implementation FeedViewController
@@ -95,6 +97,11 @@
     [self performSegueWithIdentifier:@"SpecificUserProfile" sender:nil];
 }
 
+-(void)segueToCommentFromUser:(Post *)post{
+    self.commentPost = post;
+    [self performSegueWithIdentifier:@"CommentSegue" sender:nil];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -106,7 +113,10 @@
         profileVC.user = self.profileUser;
         profileVC.currentUser = NO;
     }
-    
+    else if([segue.identifier isEqualToString:@"CommentSegue"]){
+        CommentViewController *commentVC = [segue destinationViewController];
+        commentVC.post = self.commentPost;
+    }
 }
 
 

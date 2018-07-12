@@ -22,14 +22,11 @@
 }
 
 -(void)onTapImage{
-    NSLog(@"HERE");
     [self.delegate segueToProfileFromUser:self.post.author];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 -(void)setPostDetail:(Post *)post{
@@ -66,6 +63,10 @@
     
     if(self.post.liked) self.likeButton.selected = YES;
     else self.likeButton.selected = NO;
+}
+
+- (IBAction)onTapComment:(id)sender {
+    [self.delegate segueToCommentFromUser:self.post];
 }
 
 - (IBAction)onTapLike:(id)sender {

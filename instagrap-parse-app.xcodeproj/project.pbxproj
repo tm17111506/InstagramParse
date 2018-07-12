@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		38B6CE0B6FA09AFD4516BD58 /* libPods-instagrap-parse-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 120FCD771291D2B7E09A6260 /* libPods-instagrap-parse-app.a */; };
+		9291D18020F6DF7E00AAD167 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9291D17F20F6DF7E00AAD167 /* CommentViewController.m */; };
+		9291D18320F6DFAD00AAD167 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9291D18220F6DFAD00AAD167 /* CommentTableViewCell.m */; };
 		92B5AFC620F5323200A25D5F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B5AFC520F5323200A25D5F /* ProfileViewController.m */; };
 		92B5AFC920F539D700A25D5F /* PostCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B5AFC820F539D700A25D5F /* PostCollectionCell.m */; };
 		92B5AFCC20F560FF00A25D5F /* DescriptionPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B5AFCB20F560FF00A25D5F /* DescriptionPostViewController.m */; };
@@ -28,6 +30,10 @@
 		120FCD771291D2B7E09A6260 /* libPods-instagrap-parse-app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-instagrap-parse-app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16EF50904C59FB400634D7EB /* Pods-instagrap-parse-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagrap-parse-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-instagrap-parse-app/Pods-instagrap-parse-app.release.xcconfig"; sourceTree = "<group>"; };
 		53536718A459AAFBB20660DC /* Pods-instagrap-parse-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagrap-parse-app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-instagrap-parse-app/Pods-instagrap-parse-app.debug.xcconfig"; sourceTree = "<group>"; };
+		9291D17E20F6DF7E00AAD167 /* CommentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		9291D17F20F6DF7E00AAD167 /* CommentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
+		9291D18120F6DFAD00AAD167 /* CommentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
+		9291D18220F6DFAD00AAD167 /* CommentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
 		92B5AFC420F5323200A25D5F /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		92B5AFC520F5323200A25D5F /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		92B5AFC720F539D700A25D5F /* PostCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCollectionCell.h; sourceTree = "<group>"; };
@@ -135,6 +141,8 @@
 				92B5AFCB20F560FF00A25D5F /* DescriptionPostViewController.m */,
 				92B5AFCD20F574D000A25D5F /* SettingViewController.h */,
 				92B5AFCE20F574D000A25D5F /* SettingViewController.m */,
+				9291D17E20F6DF7E00AAD167 /* CommentViewController.h */,
+				9291D17F20F6DF7E00AAD167 /* CommentViewController.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -155,6 +163,8 @@
 				92F5EA8020F43927005FBE84 /* PostCell.m */,
 				92B5AFC720F539D700A25D5F /* PostCollectionCell.h */,
 				92B5AFC820F539D700A25D5F /* PostCollectionCell.m */,
+				9291D18120F6DFAD00AAD167 /* CommentTableViewCell.h */,
+				9291D18220F6DFAD00AAD167 /* CommentTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -274,8 +284,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9291D18020F6DF7E00AAD167 /* CommentViewController.m in Sources */,
 				92F5EA7420F41C9A005FBE84 /* FeedViewController.m in Sources */,
 				92F5EA6E20F4144D005FBE84 /* LoginViewController.m in Sources */,
+				9291D18320F6DFAD00AAD167 /* CommentTableViewCell.m in Sources */,
 				92B5AFC620F5323200A25D5F /* ProfileViewController.m in Sources */,
 				92B5AFC920F539D700A25D5F /* PostCollectionCell.m in Sources */,
 				92F5EA8120F43927005FBE84 /* PostCell.m in Sources */,
