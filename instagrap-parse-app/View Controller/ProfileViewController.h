@@ -11,4 +11,6 @@
 #import "Post.h"
 
 @interface ProfileViewController : UIViewController
+@property (strong, nonatomic) PFUser *user;
+@property BOOL currentUser;
 @end

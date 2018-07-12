@@ -54,15 +54,13 @@
         user[@"profilePicture"] = imageString;
         [user saveInBackground];
         self.fromUserProfile = NO;
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popViewControllerAnimated:YES];
     }
     else{
         [self dismissViewControllerAnimated:YES completion:nil];
         [self performSegueWithIdentifier:@"DescriptionSegue" sender:nil];
     }
-    [self dismissViewControllerAnimated:YES completion:nil];
-//    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    // Do something with the images (based on your use case)
-    // Dismiss UIImagePickerController to go back to your original view controller
 }
 
 - (void)didReceiveMemoryWarning {

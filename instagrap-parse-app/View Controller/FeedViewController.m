@@ -12,11 +12,14 @@
 #import "LoginViewController.h"
 #import "Post.h"
 #import "PostCell.h"
+#import "SVProgressHUD.h"
+#import "ProfileViewController.h"
 
-@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, PostCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray<Post*> *posts;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) PFUser *profileUser;
 @end
 
 @implementation FeedViewController
@@ -35,10 +38,15 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)onTapLogout:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {}];
     NSLog(@"User has logged out!");
@@ -55,6 +63,7 @@
     [postQuery includeKey:@"author"];
     postQuery.limit = 20;
     
+    [SVProgressHUD show];
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray <Post*> * _Nullable posts, NSError * _Nullable error) {
         if(posts){
             NSLog(@"Retrived Data");
@@ -65,6 +74,7 @@
             NSLog(@"Unable to fetch Posts: %@", error.localizedDescription);
         }
     }];
+    [SVProgressHUD dismiss];
     [self.refreshControl endRefreshing];
 }
 
@@ -76,17 +86,28 @@
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     Post *post = self.posts[indexPath.row];
     [cell setPostDetail:post];
+    cell.delegate = self;
     return cell;
 }
 
+-(void)segueToProfileFromUser:(PFUser *)user{
+    self.profileUser = user;
+    [self performSegueWithIdentifier:@"SpecificUserProfile" sender:nil];
+}
 
-/*#pragma mark - Navigation
+#pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"SpecificUserProfile"]){
+        ProfileViewController *profileVC = [segue destinationViewController];
+        profileVC.user = self.profileUser;
+        profileVC.currentUser = NO;
+    }
+    
 }
-*/
+
 
 @end

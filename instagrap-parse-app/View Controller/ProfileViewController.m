@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *numPostLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
-@property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) NSArray *posts;
 @property (weak, nonatomic) IBOutlet UICollectionView *postCollectionView;
 
@@ -27,8 +26,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.user = [PFUser currentUser];
+    if(self.user != nil && self.currentUser == NO) self.currentUser = YES;
+    else{
+        [[PFUser currentUser] fetchInBackground];
+        self.user = [PFUser currentUser];
+    }
+    
     [self fetchPosts];
+    
     self.userNameLabel.text = self.user.username;
     
     self.postCollectionView.delegate = self;
@@ -42,15 +47,23 @@
     self.numFollwersLabel.text = @"0";
     self.numFollowingLabel.text = @"0";
     
-    [[PFUser currentUser] fetchInBackground];
-    self.user = [PFUser currentUser];
-    
     PFFile *file = (PFFile *)self.user[@"profilePicture"];
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         self.userProfileView.image = [UIImage imageWithData:data];
     }];
     self.userProfileView.layer.cornerRadius = self.userProfileView.layer.bounds.size.height/2;
     self.userProfileView.layer.masksToBounds = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [self.user fetchInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        
+        PFFile *file = (PFFile *)self.user[@"profilePicture"];
+        [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            self.userProfileView.image = [UIImage imageWithData:data];
+        }];
+        [self fetchPosts];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,7 +105,6 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.posts.count;
 }
-
 
 /*
 #pragma mark - Navigation

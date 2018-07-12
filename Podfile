@@ -7,6 +7,7 @@ target 'instagrap-parse-app' do
   pod 'Parse'
   pod 'AFNetworking'
   pod 'DateTools'
+  pod 'SVProgressHUD'
 
   # Pods for instagrap-parse-app
 

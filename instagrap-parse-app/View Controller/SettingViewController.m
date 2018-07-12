@@ -23,6 +23,10 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [self getImageFromData];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -35,6 +39,8 @@
     PFFile *file = (PFFile *)self.user[@"profilePicture"];
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         self.profileImageView.image = [UIImage imageWithData:data];
+        self.profileImageView.layer.cornerRadius = self.profileImageView.layer.bounds.size.width/2;
+        self.profileImageView.layer.masksToBounds = YES;
     }];
 }
 
