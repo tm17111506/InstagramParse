@@ -12,6 +12,8 @@
 #import "UIImageView+AFNetworking.h"
 
 @interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numFollowingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numFollwersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numPostLabel;
@@ -51,6 +53,8 @@
     layout.itemSize = CGSizeMake(posterWidth, posterWidth);
     self.userProfileView.layer.cornerRadius = self.userProfileView.layer.bounds.size.height/2;
     self.userProfileView.layer.masksToBounds = YES;
+    self.summaryLabel.text = self.user[@"summary"];
+    self.locationLabel.text = self.user[@"location"];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

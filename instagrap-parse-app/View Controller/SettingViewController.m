@@ -10,8 +10,11 @@
 #import "Parse.h"
 #import "CaptureViewController.h"
 
-@interface SettingViewController ()
+@interface SettingViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UITextField *userSummaryLabel;
+@property (weak, nonatomic) IBOutlet UITextField *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) PFUser *user;
 @end
 
@@ -20,6 +23,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getImageFromData];
+    self.locationLabel.delegate = self;
+    self.locationLabel.tag = 1;
+    self.userSummaryLabel.delegate = self;
+    self.userSummaryLabel.tag = 0;
+    self.usernameLabel.text = self.user.username;
+    self.userSummaryLabel.text = self.user[@"summary"];
+    self.locationLabel.text = self.user[@"location"];
+    [self.usernameLabel sizeToFit];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -28,6 +39,19 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if(textField.tag == 0){
+        self.user[@"summary"] = textField.text;
+        [self.user saveInBackground];
+    }
+    else if (textField.tag == 1){
+        self.user[@"location"] = textField.text;
+        [self.user saveInBackground];
+    }
+    [textField resignFirstResponder];
+    return NO;
 }
 
 - (void)getImageFromData{
