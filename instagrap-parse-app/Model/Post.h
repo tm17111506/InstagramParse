@@ -11,7 +11,7 @@
 #import "Parse.h"
 
 @interface Post : PFObject <PFSubclassing>
-@property (strong, nonatomic) NSString *postID;
+@property (strong, nonatomic) NSString * _Nullable postID;
 @property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) PFUser *author;
 

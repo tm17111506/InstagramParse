@@ -24,12 +24,12 @@ The following **optional** features are implemented:
 - [x] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user. AKA, tabs for Home Feed and Profile
 - [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
 - [x] Show the username and creation time for each post
-- [ ] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
+- [x] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
 - User Profiles:
 - [x] Allow the logged in user to add a profile photo
 - [x] Display the profile photo with each post
-- [ ] Tapping on a post's username or profile photo goes to that user's profile page
-- [ ] User can comment on a post and see all comments for each post in the post details screen.
+- [x] Tapping on a post's username or profile photo goes to that user's profile page
+- [x] User can comment on a post and see all comments for each post in the post details screen.
 - [x] User can like a post and see number of likes for each post in the post details screen.
 - [ ] Implement a custom camera view.
 

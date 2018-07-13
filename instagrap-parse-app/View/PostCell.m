@@ -48,7 +48,9 @@
     }
     [self.detailTimeLabel sizeToFit];
     NSURL *url = [NSURL URLWithString:post.image.url];
+    self.postImageView.alpha = 0.0;
     [self.postImageView setImageWithURL:url];
+    [UIView animateWithDuration:0.5 animations:^{self.postImageView.alpha = 1.0;}];
     
     [[PFUser currentUser] fetchInBackground];
     PFUser *user = post.author;
@@ -57,7 +59,7 @@
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         self.userProfileImageView.image = [UIImage imageWithData:data];
     }];
-    
+
     self.userProfileImageView.layer.cornerRadius = self.userProfileImageView.layer.bounds.size.height/2;
     self.userProfileImageView.layer.masksToBounds = YES;
     

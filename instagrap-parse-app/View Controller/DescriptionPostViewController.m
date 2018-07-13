@@ -8,6 +8,7 @@
 
 #import "DescriptionPostViewController.h"
 #import "Post.h"
+#import "SVProgressHUD.h"
 
 @interface DescriptionPostViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *captionTextLabel;
@@ -28,9 +29,11 @@
 }
 
 - (IBAction)onTapPost:(id)sender {
+    [SVProgressHUD show];
     [Post postUserImage:self.orgImage withCaption:self.captionTextLabel.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded){
             NSLog(@"Successfully uploaded image!");
+            [SVProgressHUD dismiss];
         }
         else{
             NSLog(@"😫😫😫 Error posting image: %@", error.localizedDescription);

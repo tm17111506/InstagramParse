@@ -16,18 +16,23 @@
 #import "ProfileViewController.h"
 #import "CommentViewController.h"
 
-@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, PostCellDelegate>
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, PostCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray<Post*> *posts;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) PFUser *profileUser;
 @property (strong, nonatomic) Post *commentPost;
+@property (strong, nonatomic) NSDate *lastDate;
+@property int newPostCount;
+@property BOOL isMoreDataLoading;
 @end
 
 @implementation FeedViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [SVProgressHUD show];
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -37,10 +42,12 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
-    // Do any additional setup after loading the view.
+    self.isMoreDataLoading = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    [SVProgressHUD show];
+    [self fetchPosts];
     [self.tableView reloadData];
 }
 
@@ -65,19 +72,55 @@
     [postQuery includeKey:@"author"];
     postQuery.limit = 20;
     
-    [SVProgressHUD show];
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray <Post*> * _Nullable posts, NSError * _Nullable error) {
         if(posts){
             NSLog(@"Retrived Data");
             self.posts = posts;
             [self.tableView reloadData];
+            [SVProgressHUD dismiss];
         }
         else{
             NSLog(@"Unable to fetch Posts: %@", error.localizedDescription);
         }
     }];
-    [SVProgressHUD dismiss];
     [self.refreshControl endRefreshing];
+}
+
+-(void)fetchMorePosts:(NSDate *)lastDate{
+    NSLog(@"%lu", (unsigned long)self.posts.count);
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    [postQuery whereKey:@"createdAt" lessThan:lastDate];
+    postQuery.limit = 5;
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            NSLog(@"Yes Posts!");
+            NSLog(@"%lu", posts.count);
+            NSMutableArray *tempArray = [NSMutableArray arrayWithArray:self.posts];
+            self.newPostCount = posts.count;
+            for(int j = 0; j < self.newPostCount; j++){
+                [tempArray insertObject:posts[j] atIndex:(self.posts.count+j)];
+            }
+            NSLog(@"%lu", tempArray.count);
+            self.posts = [tempArray copy];
+            
+            NSMutableArray *indexPathArray = [[NSMutableArray alloc] init];
+            NSLog(@"%d", self.newPostCount);
+            for(int i=0; i<self.newPostCount; i++){
+                NSIndexPath *idxPath = [NSIndexPath indexPathForRow:self.posts.count - 1 - i inSection:0];
+                [indexPathArray addObject:idxPath];
+            }
+            NSArray *indexPathOrgArray = [indexPathArray copy];
+            [self.tableView insertRowsAtIndexPaths:indexPathOrgArray withRowAnimation:UITableViewRowAnimationNone];
+            
+            if(self.newPostCount == 5) self.isMoreDataLoading = NO;
+        } else {
+            NSLog(@"No Posts...");
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    NSLog(@"%lu", (unsigned long)self.posts.count);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -90,6 +133,21 @@
     [cell setPostDetail:post];
     cell.delegate = self;
     return cell;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!self.isMoreDataLoading){
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            self.isMoreDataLoading = YES;
+            Post *latestPost = self.posts[self.posts.count - 1];
+            [self fetchMorePosts:latestPost.createdAt];
+        }
+    }
 }
 
 -(void)segueToProfileFromUser:(PFUser *)user{
