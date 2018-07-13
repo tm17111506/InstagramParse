@@ -18,32 +18,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)onTapSignUp:(id)sender {
     [self registerUser];
 }
 
 - (void)registerUser {
-    // initialize a user object
     PFUser *newUser = [PFUser user];
     
-    // set user properties
     newUser.username = self.usernameField.text;
     newUser.password = self.passwordField.text;
     
-    // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"User registered successfully");
-            // manually segue to logged in view
         }
     }];
 }
@@ -62,7 +57,6 @@
         } else {
             NSLog(@"User logged in successfully");
             [self performSegueWithIdentifier:@"LoginSegue" sender:nil];
-            // display view controller that needs to shown after successful login
         }
     }];
 }

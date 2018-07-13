@@ -21,7 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.previewImageView.image = self.orgImage;
-    // Do any additional setup after loading the view.
 }
 
 - (IBAction)onTapCancel:(id)sender {
@@ -32,7 +31,6 @@
     [SVProgressHUD show];
     [Post postUserImage:self.orgImage withCaption:self.captionTextLabel.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded){
-            NSLog(@"Successfully uploaded image!");
             [SVProgressHUD dismiss];
         }
         else{
@@ -44,13 +42,10 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

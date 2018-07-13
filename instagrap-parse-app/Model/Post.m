@@ -9,10 +9,10 @@
 #import "Post.h"
 
 @implementation Post
-@dynamic postID, userID, author, caption, image, likeCount, commentCount, liked, comments;
+@dynamic postID, userID, author, caption, image, likeCount, commentCount, comments;
 
-const int imageHeight = 500;
-const int imageWidth = 500;
+static const int imageHeight = 400;
+static const int imageWidth = 400;
 
 + (nonnull NSString *)parseClassName{
     return @"Post";
@@ -27,8 +27,8 @@ const int imageWidth = 500;
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
     newPost.userID = [PFUser currentUser].username;
-    newPost.liked = NO;
     newPost.comments = [[NSArray alloc] init];
+    newPost.liked = NO;
     [newPost saveInBackgroundWithBlock:completion];
 }
 

@@ -11,7 +11,7 @@
 #import "Parse.h"
 
 @interface Post : PFObject <PFSubclassing>
-@property (strong, nonatomic) NSString * _Nullable postID;
+@property (strong, nonatomic) NSString *postID;
 @property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) PFUser *author;
 
@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSNumber *commentCount;
 @property (strong, nonatomic) NSArray *comments;
 @property BOOL liked;
+
 + (void) postUserImage: (UIImage * _Nullable )image withCaption: (NSString * _Nullable)caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end

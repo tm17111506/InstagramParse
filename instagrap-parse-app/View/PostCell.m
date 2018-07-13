@@ -31,13 +31,14 @@
 
 -(void)setPostDetail:(Post *)post{
     self.post = post;
+    
     self.numLikesLabel.text = [NSString stringWithFormat:@"%@",post.likeCount];
     self.detailUserNameLabel.text = post.author.username;
     self.detailDescriptionLabel.text = post.caption;
     [self.detailDescriptionLabel sizeToFit];
     self.userNameLabel.text = post.author.username;
-    NSDate *createdDate = post.createdAt;
     
+    NSDate *createdDate = post.createdAt;
     if(createdDate.timeIntervalSinceNow < -43200){
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"MMM d YYYY";
@@ -47,6 +48,7 @@
         self.detailTimeLabel.text = createdDate.timeAgoSinceNow;
     }
     [self.detailTimeLabel sizeToFit];
+    
     NSURL *url = [NSURL URLWithString:post.image.url];
     self.postImageView.alpha = 0.0;
     [self.postImageView setImageWithURL:url];
@@ -87,6 +89,5 @@
     [self.post saveInBackground];
     self.numLikesLabel.text = [NSString stringWithFormat:@"%@",self.post.likeCount];
 }
-
 
 @end

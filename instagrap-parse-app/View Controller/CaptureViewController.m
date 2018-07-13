@@ -16,9 +16,11 @@
 
 @implementation CaptureViewController
 
+static const int imageHeight = 200;
+static const int imageWidth = 200;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (IBAction)onTapCamera:(id)sender {
@@ -44,13 +46,13 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
-    // Get the image captured by the UIImagePickerController
-    self.orgImage = info[UIImagePickerControllerOriginalImage];
+    //self.orgImage = info[UIImagePickerControllerOriginalImage];
+    self.orgImage = [self resizeImage:info[UIImagePickerControllerOriginalImage]];
     if(self.fromUserProfile){
+        PFUser *user = PFUser.currentUser;
         NSData *data = UIImagePNGRepresentation(self.orgImage);
         NSString *imageString = [PFFile fileWithName:@"ProfilePic" data:data];
         
-        PFUser *user = PFUser.currentUser;
         user[@"profilePicture"] = imageString;
         [user saveInBackground];
         self.fromUserProfile = NO;
@@ -63,23 +65,33 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (UIImage *)resizeImage:(UIImage *)image{
+    CGSize size = CGSizeMake(imageWidth, imageHeight);
+    
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.height, size.width)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//     Get the new view controller using [segue destinationViewController].
-//     Pass the selected object to the new view controller.
     if([segue.identifier isEqual:@"DescriptionSegue"]){
         UINavigationController *navController = [segue destinationViewController];
         DescriptionPostViewController *descriptionVC = (DescriptionPostViewController*)navController.topViewController;
         descriptionVC.orgImage = self.orgImage;
     }
 }
-
 
 @end

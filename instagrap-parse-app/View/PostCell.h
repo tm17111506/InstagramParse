@@ -23,7 +23,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *postImageView;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
-@property (weak, nonatomic) Post *post;
+
 @property (strong, nonatomic) id<PostCellDelegate> delegate;
+
+@property (weak, nonatomic) Post *post;
 - (void)setPostDetail:(Post*)post;
 @end

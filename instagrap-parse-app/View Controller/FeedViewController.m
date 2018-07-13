@@ -58,7 +58,6 @@
 
 - (IBAction)onTapLogout:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {}];
-    NSLog(@"User has logged out!");
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -70,11 +69,10 @@
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
-    postQuery.limit = 20;
+    postQuery.limit = 15;
     
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray <Post*> * _Nullable posts, NSError * _Nullable error) {
         if(posts){
-            NSLog(@"Retrived Data");
             self.posts = posts;
             [self.tableView reloadData];
             [SVProgressHUD dismiss];
@@ -87,40 +85,36 @@
 }
 
 -(void)fetchMorePosts:(NSDate *)lastDate{
-    NSLog(@"%lu", (unsigned long)self.posts.count);
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
     [postQuery whereKey:@"createdAt" lessThan:lastDate];
     postQuery.limit = 5;
+    
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
-            NSLog(@"Yes Posts!");
-            NSLog(@"%lu", posts.count);
             NSMutableArray *tempArray = [NSMutableArray arrayWithArray:self.posts];
             self.newPostCount = posts.count;
             for(int j = 0; j < self.newPostCount; j++){
                 [tempArray insertObject:posts[j] atIndex:(self.posts.count+j)];
             }
-            NSLog(@"%lu", tempArray.count);
-            self.posts = [tempArray copy];
             
+            self.posts = [tempArray copy];
             NSMutableArray *indexPathArray = [[NSMutableArray alloc] init];
-            NSLog(@"%d", self.newPostCount);
+
             for(int i=0; i<self.newPostCount; i++){
                 NSIndexPath *idxPath = [NSIndexPath indexPathForRow:self.posts.count - 1 - i inSection:0];
                 [indexPathArray addObject:idxPath];
             }
+            
             NSArray *indexPathOrgArray = [indexPathArray copy];
             [self.tableView insertRowsAtIndexPaths:indexPathOrgArray withRowAnimation:UITableViewRowAnimationNone];
             
             if(self.newPostCount == 5) self.isMoreDataLoading = NO;
         } else {
-            NSLog(@"No Posts...");
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-    NSLog(@"%lu", (unsigned long)self.posts.count);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -137,11 +131,9 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if(!self.isMoreDataLoading){
-        // Calculate the position of one screen length before the bottom of the results
         int scrollViewContentHeight = self.tableView.contentSize.height;
         int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
         
-        // When the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
             self.isMoreDataLoading = YES;
             Post *latestPost = self.posts[self.posts.count - 1];
@@ -160,12 +152,7 @@
     [self performSegueWithIdentifier:@"CommentSegue" sender:nil];
 }
 
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"SpecificUserProfile"]){
         ProfileViewController *profileVC = [segue destinationViewController];
         profileVC.user = self.profileUser;
@@ -176,6 +163,5 @@
         commentVC.post = self.commentPost;
     }
 }
-
 
 @end

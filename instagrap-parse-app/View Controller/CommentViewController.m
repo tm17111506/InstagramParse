@@ -18,14 +18,22 @@
 
 @implementation CommentViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+}
+
 - (IBAction)onTapPost:(id)sender {
     NSMutableDictionary *singleComment = [[NSMutableDictionary alloc]init];
     [singleComment setObject:[PFUser currentUser] forKey:@"author"];
     [singleComment setObject:self.commentTextField.text forKey:@"commentText"];
-    NSLog(@"%@", singleComment[@"author"]);
+
     NSMutableArray *tempArray = [NSMutableArray arrayWithArray:self.post.comments];
     [tempArray insertObject:singleComment atIndex:0];
     self.post.comments = [tempArray copy];
+    
     [self.post saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded){
             self.commentTextField.text = @"";
@@ -35,17 +43,8 @@
     }];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    // Do any additional setup after loading the view.
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -54,16 +53,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CommentTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
-    NSMutableArray *tempArray = [NSMutableArray arrayWithArray:self.post.comments];
-    NSDictionary *comment = tempArray[indexPath.row];
-    cell.commentLabel.text = comment[@"commentText"];
+    NSMutableArray *commentsArray = [NSMutableArray arrayWithArray:self.post.comments];
+    NSDictionary *comment = commentsArray[indexPath.row];
+    
     PFUser *orgUser = comment[@"author"];
     PFUser *user = [PFQuery getUserObjectWithId:orgUser.objectId];
+    
+    cell.commentLabel.text = comment[@"commentText"];
     cell.usernameLabel.text = user.username;
+    
     PFFile *file = (PFFile *)(user[@"profilePicture"]);
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         cell.profileImageView.image = [UIImage imageWithData:data];
     }];
+    
     cell.profileImageView.layer.cornerRadius = cell.profileImageView.layer.bounds.size.height/2;
     cell.profileImageView.layer.masksToBounds = YES;
     
@@ -74,8 +77,6 @@
 
 /*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

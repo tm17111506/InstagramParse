@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		38B6CE0B6FA09AFD4516BD58 /* libPods-instagrap-parse-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 120FCD771291D2B7E09A6260 /* libPods-instagrap-parse-app.a */; };
 		9291D18020F6DF7E00AAD167 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9291D17F20F6DF7E00AAD167 /* CommentViewController.m */; };
 		9291D18320F6DFAD00AAD167 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9291D18220F6DFAD00AAD167 /* CommentTableViewCell.m */; };
 		92B5AFC620F5323200A25D5F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B5AFC520F5323200A25D5F /* ProfileViewController.m */; };
@@ -24,12 +23,13 @@
 		92F5EA7720F423B4005FBE84 /* CaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F5EA7620F423B4005FBE84 /* CaptureViewController.m */; };
 		92F5EA7D20F42B43005FBE84 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F5EA7C20F42B43005FBE84 /* Post.m */; };
 		92F5EA8120F43927005FBE84 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F5EA8020F43927005FBE84 /* PostCell.m */; };
+		A5C8F0D8F82666D66C2E4B57 /* libPods-instagrap-parse-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9894D942518DE7D3E792FD /* libPods-instagrap-parse-app.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		120FCD771291D2B7E09A6260 /* libPods-instagrap-parse-app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-instagrap-parse-app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		16EF50904C59FB400634D7EB /* Pods-instagrap-parse-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagrap-parse-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-instagrap-parse-app/Pods-instagrap-parse-app.release.xcconfig"; sourceTree = "<group>"; };
-		53536718A459AAFBB20660DC /* Pods-instagrap-parse-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagrap-parse-app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-instagrap-parse-app/Pods-instagrap-parse-app.debug.xcconfig"; sourceTree = "<group>"; };
+		01D978F11413863EBB8E52E0 /* Pods-instagrap-parse-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagrap-parse-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-instagrap-parse-app/Pods-instagrap-parse-app.release.xcconfig"; sourceTree = "<group>"; };
+		4046776C2F3853E12ED54B1A /* Pods-instagrap-parse-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagrap-parse-app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-instagrap-parse-app/Pods-instagrap-parse-app.debug.xcconfig"; sourceTree = "<group>"; };
+		6E9894D942518DE7D3E792FD /* libPods-instagrap-parse-app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-instagrap-parse-app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9291D17E20F6DF7E00AAD167 /* CommentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
 		9291D17F20F6DF7E00AAD167 /* CommentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		9291D18120F6DFAD00AAD167 /* CommentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
@@ -67,28 +67,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38B6CE0B6FA09AFD4516BD58 /* libPods-instagrap-parse-app.a in Frameworks */,
+				A5C8F0D8F82666D66C2E4B57 /* libPods-instagrap-parse-app.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1E088E441454F0183B6EEF00 /* Pods */ = {
+		39206F3BEBFD63E326CCB372 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				53536718A459AAFBB20660DC /* Pods-instagrap-parse-app.debug.xcconfig */,
-				16EF50904C59FB400634D7EB /* Pods-instagrap-parse-app.release.xcconfig */,
+				4046776C2F3853E12ED54B1A /* Pods-instagrap-parse-app.debug.xcconfig */,
+				01D978F11413863EBB8E52E0 /* Pods-instagrap-parse-app.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		4E58638E686A81D226ED8A5D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				120FCD771291D2B7E09A6260 /* libPods-instagrap-parse-app.a */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		92F5EA4920F40876005FBE84 = {
@@ -96,8 +88,8 @@
 			children = (
 				92F5EA5420F40876005FBE84 /* instagrap-parse-app */,
 				92F5EA5320F40876005FBE84 /* Products */,
-				1E088E441454F0183B6EEF00 /* Pods */,
-				4E58638E686A81D226ED8A5D /* Frameworks */,
+				39206F3BEBFD63E326CCB372 /* Pods */,
+				BC6595C8966E472C553AB448 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,6 +161,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		BC6595C8966E472C553AB448 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E9894D942518DE7D3E792FD /* libPods-instagrap-parse-app.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -176,11 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92F5EA6820F40876005FBE84 /* Build configuration list for PBXNativeTarget "instagrap-parse-app" */;
 			buildPhases = (
-				0F57C953D08EF7C381DADA70 /* [CP] Check Pods Manifest.lock */,
+				5304E08034507DDADE4455D0 /* [CP] Check Pods Manifest.lock */,
 				92F5EA4E20F40876005FBE84 /* Sources */,
 				92F5EA4F20F40876005FBE84 /* Frameworks */,
 				92F5EA5020F40876005FBE84 /* Resources */,
-				84B839C160A67F640AA2031A /* [CP] Copy Pods Resources */,
+				BE46DE9F3850BA4255666C87 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -237,7 +237,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0F57C953D08EF7C381DADA70 /* [CP] Check Pods Manifest.lock */ = {
+		5304E08034507DDADE4455D0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -255,7 +255,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		84B839C160A67F640AA2031A /* [CP] Copy Pods Resources */ = {
+		BE46DE9F3850BA4255666C87 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -434,7 +434,7 @@
 		};
 		92F5EA6920F40876005FBE84 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53536718A459AAFBB20660DC /* Pods-instagrap-parse-app.debug.xcconfig */;
+			baseConfigurationReference = 4046776C2F3853E12ED54B1A /* Pods-instagrap-parse-app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -452,7 +452,7 @@
 		};
 		92F5EA6A20F40876005FBE84 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 16EF50904C59FB400634D7EB /* Pods-instagrap-parse-app.release.xcconfig */;
+			baseConfigurationReference = 01D978F11413863EBB8E52E0 /* Pods-instagrap-parse-app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
