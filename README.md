@@ -36,11 +36,12 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] Images fade in when loading
+- [x] Change his or her profile image and add description and location
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. I am curious how the "story" feature of Instagram would / could be implemented in this parse-instagram.
+2. Similar to last time, I tried to focus on modualizing the code such that there are less repeated code and more organization. I think this practice can bring in more clean / structured code and produce less bugs.
 
 ## Video Walkthrough
 
@@ -63,7 +64,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-Copyright [yyyy] [name of copyright owner]
+Copyright [2018] [Tiffany Ma]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
