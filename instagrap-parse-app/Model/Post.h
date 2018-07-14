@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSNumber *likeCount;
 @property (strong, nonatomic) NSNumber *commentCount;
 @property (strong, nonatomic) NSArray *comments;
+@property (strong, nonatomic) NSArray *likedUsers;
 @property BOOL liked;
 
 + (void) postUserImage: (UIImage * _Nullable )image withCaption: (NSString * _Nullable)caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;

@@ -65,6 +65,14 @@
     self.userProfileImageView.layer.cornerRadius = self.userProfileImageView.layer.bounds.size.height/2;
     self.userProfileImageView.layer.masksToBounds = YES;
     
+    self.post.liked = NO;
+    self.likedUsers = [NSMutableArray arrayWithArray:self.post.likedUsers];
+    for(NSString *objectId in self.likedUsers){
+        if([[PFUser currentUser].username isEqualToString:objectId]){
+            self.post.liked = YES;
+        }
+    }
+    
     if(self.post.liked) self.likeButton.selected = YES;
     else self.likeButton.selected = NO;
 }
@@ -79,13 +87,20 @@
         self.likeButton.selected = NO;
         int count = [self.post.likeCount intValue];
         self.post.likeCount = [NSNumber numberWithInt:(count-1)];
+        [self.likedUsers removeObject:[PFUser currentUser].username];
+        NSLog(@"%@", self.likedUsers);
     }
     else{
         self.post.liked = YES;
         self.likeButton.selected = YES;
         int count = [self.post.likeCount intValue];
         self.post.likeCount = [NSNumber numberWithInt:(count+1)];
+        NSString *likedUserId = [PFUser currentUser].username;
+        [self.likedUsers addObject:likedUserId];
+        NSLog(@"HERE");
+        NSLog(@"%@", self.likedUsers);
     }
+    self.post.likedUsers = [self.likedUsers copy];
     [self.post saveInBackground];
     self.numLikesLabel.text = [NSString stringWithFormat:@"%@",self.post.likeCount];
 }

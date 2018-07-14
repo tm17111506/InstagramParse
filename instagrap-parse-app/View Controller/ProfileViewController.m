@@ -65,6 +65,8 @@
         }];
         [self fetchPosts];
     }];
+    self.summaryLabel.text = self.user[@"summary"];
+    self.locationLabel.text = self.user[@"location"];
 }
 
 - (void)didReceiveMemoryWarning {

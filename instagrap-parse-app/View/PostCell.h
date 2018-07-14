@@ -23,8 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *postImageView;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
-
 @property (strong, nonatomic) id<PostCellDelegate> delegate;
+@property (strong, nonatomic) NSMutableArray *likedUsers;
 
 @property (weak, nonatomic) Post *post;
 - (void)setPostDetail:(Post*)post;
